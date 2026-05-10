@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CD-DOS - Современная DOS-подобная операционная система</title>
+    <title>CD-DOS - DOS-подобная операционная система</title>
     <style>
         * {
             margin: 0;
@@ -12,169 +12,128 @@
         }
 
         body {
-            font-family: 'Courier New', 'Fira Code', 'Consolas', monospace;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #0f0;
+            font-family: 'Courier New', 'Consolas', monospace;
+            background: #000000;
+            color: #00ff00;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* ASCII Art стиль */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Header с логотипом */
+        /* Шапка с логотипом */
         .header {
-            background: rgba(0, 0, 0, 0.8);
-            border-bottom: 3px solid #0f0;
+            border-bottom: 2px solid #00ff00;
             padding: 20px 0;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.1);
+            margin-bottom: 30px;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-icon {
-            font-size: 64px;
-            animation: blink 2s infinite;
+        .logo-img {
+            width: 64px;
+            height: 64px;
+            image-rendering: pixelated;
         }
 
         .logo-text {
             font-size: 48px;
             font-weight: bold;
-            text-shadow: 0 0 10px #0f0;
-        }
-
-        .c-badge {
-            background: #0f0;
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 24px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; text-shadow: 0 0 10px #0f0; }
-            50% { opacity: 0.5; text-shadow: 0 0 20px #0f0; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); background: #0f0; color: #000; }
-            50% { transform: scale(1.05); background: #0a0; color: #0f0; }
         }
 
         /* Навигация */
         .nav {
+            margin: 20px 0;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .nav a {
-            color: #0f0;
+            color: #00ff00;
             text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid #0f0;
-            transition: all 0.3s;
+            padding: 5px 10px;
+            border: 1px solid #00ff00;
         }
 
         .nav a:hover {
-            background: #0f0;
-            color: #000;
-            box-shadow: 0 0 10px #0f0;
+            background: #00ff00;
+            color: #000000;
         }
 
         /* Секции */
         .section {
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid #0f0;
-            padding: 30px;
+            border: 1px solid #00ff00;
+            padding: 20px;
             margin-bottom: 30px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
         }
 
         .section-title {
-            font-size: 32px;
-            margin-bottom: 20px;
-            border-left: 4px solid #0f0;
-            padding-left: 15px;
+            font-size: 24px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00ff00;
+            padding-left: 10px;
         }
 
-        /* Команды */
-        .commands-grid {
+        /* Сетки */
+        .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
-        .command-category {
-            background: rgba(0, 255, 0, 0.05);
-            border: 1px solid #0f0;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .card {
+            border: 1px solid #00ff00;
             padding: 15px;
-            border-radius: 5px;
         }
 
-        .command-category h3 {
-            color: #0f0;
+        .card h3 {
             margin-bottom: 10px;
-            border-bottom: 1px solid #0f0;
+            border-bottom: 1px solid #00ff00;
             padding-bottom: 5px;
         }
 
         .command-list {
             list-style: none;
+            margin-top: 10px;
         }
 
         .command-list li {
-            padding: 5px 0;
-            font-family: monospace;
+            padding: 3px 0;
         }
 
-        .command-name {
-            color: #ff0;
+        .cmd {
+            color: #ffff00;
             font-weight: bold;
         }
 
         /* Скриншоты */
         .screenshots {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
         }
 
         .screenshot {
-            background: #000;
-            border: 2px solid #0f0;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-
-        .screenshot:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            border: 1px solid #00ff00;
+            text-align: center;
         }
 
         .screenshot img {
@@ -183,369 +142,281 @@
             display: block;
         }
 
-        .screenshot-caption {
+        .screenshot p {
             padding: 10px;
-            text-align: center;
-            background: rgba(0, 255, 0, 0.1);
-            font-size: 14px;
         }
 
-        /* Download секция */
+        /* Кнопка скачивания */
         .download-box {
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.8));
-            border-radius: 10px;
+            padding: 30px;
+            border: 2px solid #00ff00;
         }
 
         .download-btn {
             display: inline-block;
-            padding: 15px 40px;
-            font-size: 24px;
-            color: #000;
-            background: #0f0;
+            padding: 10px 30px;
+            background: #00ff00;
+            color: #000000;
             text-decoration: none;
-            border-radius: 50px;
-            margin: 20px;
-            transition: all 0.3s;
             font-weight: bold;
+            margin: 10px;
         }
 
         .download-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px #0f0;
-            background: #0a0;
+            background: #ffffff;
         }
 
-        .file-info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #aaa;
-        }
-
-        /* Системные требования */
+        /* Требования */
         .requirements {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px;
         }
 
-        .req-item {
-            background: rgba(0, 255, 0, 0.05);
+        .req {
+            border-left: 3px solid #00ff00;
+            padding-left: 10px;
+        }
+
+        /* Консоль */
+        .console {
+            background: #0a0a0a;
             padding: 15px;
-            border-left: 3px solid #0f0;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid #0f0;
-            margin-top: 40px;
-            font-size: 14px;
-        }
-
-        /* ASCII Art */
-        .ascii-art {
+            border: 1px solid #00ff00;
             font-family: monospace;
-            font-size: 12px;
-            text-align: center;
-            color: #0f0;
-            margin: 20px 0;
-            white-space: pre;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo-text { font-size: 32px; }
-            .logo-icon { font-size: 48px; }
-            .c-badge { font-size: 18px; }
-            .section-title { font-size: 24px; }
-            .ascii-art { font-size: 8px; }
-        }
-
-        /* Стиль для консоли */
-        .console-demo {
-            background: #000;
-            padding: 20px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin-top: 20px;
         }
 
         .console-line {
-            color: #0f0;
             margin: 5px 0;
         }
 
-        .console-prompt {
-            color: #ff0;
+        .prompt {
+            color: #ffff00;
+        }
+
+        /* Футер */
+        .footer {
+            border-top: 1px solid #00ff00;
+            margin-top: 30px;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        hr {
+            border-color: #00ff00;
+        }
+
+        a {
+            color: #00ff00;
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <div class="container">
+<div class="container">
+    <!-- Шапка с логотипом-картинкой -->
+    <div class="header">
         <div class="logo-container">
-            <div class="logo">
-                <div class="logo-icon">🖥️</div>
-                <div class="logo-text">CD-DOS</div>
-                <div class="c-badge">C.png</div>
-            </div>
+            <img src="C.png" alt="CD-DOS Logo" class="logo-img">
+            <div class="logo-text">CD-DOS</div>
         </div>
         <div class="nav">
             <a href="#features">Особенности</a>
             <a href="#commands">Команды</a>
             <a href="#screenshots">Скриншоты</a>
             <a href="#download">Скачать</a>
-            <a href="#docs">Документация</a>
         </div>
     </div>
-</div>
 
-<div class="container">
-    <!-- ASCII Art -->
-    <div class="ascii-art">
-        ╔═══════════════════════════════════════════════════════════╗
-        ║     ██████╗ ██████╗     ██████╗  ██████╗ ███████╗        ║
-        ║     ██╔══██╗██╔══██╗    ██╔══██╗██╔═══██╗██╔════╝        ║
-        ║     ██║  ██║██████╔╝    ██║  ██║██║   ██║███████╗        ║
-        ║     ██║  ██║██╔══██╗    ██║  ██║██║   ██║╚════██║        ║
-        ║     ██████╔╝██████╔╝    ██████╔╝╚██████╔╝███████║        ║
-        ║     ╚═════╝ ╚═════╝     ╚═════╝  ╚═════╝ ╚══════╝        ║
-        ║              Advanced DOS Operating System               ║
-        ╚═══════════════════════════════════════════════════════════╝
-    </div>
+    <!-- ASCII логотип -->
+    <pre style="color: #00ff00; font-size: 10px; margin-bottom: 30px;">
+╔═══════════════════════════════════════════════════════════════╗
+║     ██████╗ ██████╗     ██████╗  ██████╗ ███████╗            ║
+║     ██╔══██╗██╔══██╗    ██╔══██╗██╔═══██╗██╔════╝            ║
+║     ██║  ██║██████╔╝    ██║  ██║██║   ██║███████╗            ║
+║     ██║  ██║██╔══██╗    ██║  ██║██║   ██║╚════██║            ║
+║     ██████╔╝██████╔╝    ██████╔╝╚██████╔╝███████║            ║
+║     ╚═════╝ ╚═════╝     ╚═════╝  ╚═════╝ ╚══════╝            ║
+║              Advanced DOS Operating System                   ║
+╚═══════════════════════════════════════════════════════════════╝
+    </pre>
 
-    <!-- Intro -->
+    <!-- Вступление -->
     <div class="section">
-        <h2 class="section-title">🚀 Добро пожаловать в CD-DOS</h2>
-        <p>CD-DOS — это современная DOS-подобная операционная система, написанная на чистом Assembler. Она сочетает в себе ностальгию по классическим DOS-системам с современными возможностями мониторинга железа и управления системой.</p>
+        <h2 class="section-title">Добро пожаловать в CD-DOS</h2>
+        <p>CD-DOS — это DOS-подобная операционная система, написанная на чистом Assembler. Она сочетает классический интерфейс с возможностями мониторинга железа.</p>
         
-        <div class="console-demo">
-            <div class="console-line"><span class="console-prompt">CD-DOS Bootloader v1.0</span></div>
-            <div class="console-line"><span class="console-prompt">Loading kernel... OK</span></div>
-            <div class="console-line"><span class="console-prompt">CD-DOS Advanced v2.0</span></div>
-            <div class="console-line"><span class="console-prompt">Copyright (c) 2024 CD-Soft</span></div>
-            <div class="console-line"><span class="console-prompt"></span></div>
-            <div class="console-line"><span class="console-prompt">CD-DOS> <span style="color:#fff;">HELP</span></span></div>
+        <div class="console" style="margin-top: 15px;">
+            <div class="console-line"><span class="prompt">CD-DOS Bootloader v1.0</span></div>
+            <div class="console-line"><span class="prompt">Loading kernel... OK</span></div>
+            <div class="console-line"><span class="prompt">CD-DOS Advanced v2.0</span></div>
+            <div class="console-line"><span class="prompt">Copyright (c) 2024 CD-Soft</span></div>
+            <div class="console-line"><span class="prompt"></span></div>
+            <div class="console-line"><span class="prompt">CD-DOS> HELP</span></div>
             <div class="console-line">=== CD-DOS Command List ===</div>
             <div class="console-line">  CLEAR, DIR, RAM, CP, SDDOS...</div>
         </div>
     </div>
 
-    <!-- Features -->
+    <!-- Особенности -->
     <div class="section" id="features">
-        <h2 class="section-title">⚡ Ключевые особенности</h2>
-        <div class="commands-grid">
-            <div class="command-category">
-                <h3>💾 Чистый Assembler</h3>
-                <p>Полностью написана на ассемблере x86 для максимальной производительности и минимального размера</p>
+        <h2 class="section-title">Ключевые особенности</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Чистый Assembler</h3>
+                <p>Полностью написана на ассемблере x86 для максимальной производительности</p>
             </div>
-            <div class="command-category">
-                <h3>🔧 Мониторинг железа</h3>
-                <p>Определение частоты CPU, температуры, информации о видеоадаптере и статуса портов</p>
+            <div class="card">
+                <h3>Мониторинг железа</h3>
+                <p>Определение частоты CPU, температуры, информации о видеоадаптере</p>
             </div>
-            <div class="command-category">
-                <h3>📁 Файловая система</h3>
-                <p>Поддержка FAT12, работа с файлами и директориями, управление атрибутами</p>
+            <div class="card">
+                <h3>Файловая система</h3>
+                <p>Поддержка FAT12, работа с файлами и директориями</p>
             </div>
-            <div class="command-category">
-                <h3>🌐 Сетевые возможности</h3>
-                <p>Встроенная поддержка сетевых команд (PING, NETSTAT) и расширяемый стек</p>
+            <div class="card">
+                <h3>Сетевые возможности</h3>
+                <p>Поддержка сетевых команд (PING, NETSTAT)</p>
             </div>
         </div>
     </div>
 
-    <!-- Commands -->
+    <!-- Команды -->
     <div class="section" id="commands">
-        <h2 class="section-title">📋 Команды CD-DOS</h2>
-        <div class="commands-grid">
-            <div class="command-category">
-                <h3>🎯 Базовые команды</h3>
+        <h2 class="section-title">Команды CD-DOS</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Базовые команды</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">CLEAR/CLS</span> - Очистка экрана</li>
-                    <li><span class="command-name">DIR</span> - Просмотр файлов</li>
-                    <li><span class="command-name">RAM</span> - Свободная память</li>
-                    <li><span class="command-name">CP</span> - Частота CPU</li>
-                    <li><span class="command-name">SDDOS/VER</span> - Версия системы</li>
-                    <li><span class="command-name">HELP</span> - Справка</li>
+                    <li><span class="cmd">CLEAR/CLS</span> - Очистка экрана</li>
+                    <li><span class="cmd">DIR</span> - Просмотр файлов</li>
+                    <li><span class="cmd">RAM</span> - Свободная память</li>
+                    <li><span class="cmd">CP</span> - Частота CPU</li>
+                    <li><span class="cmd">SDDOS/VER</span> - Версия системы</li>
+                    <li><span class="cmd">HELP</span> - Справка</li>
                 </ul>
             </div>
-            <div class="command-category">
-                <h3>💾 Управление дисками</h3>
+            <div class="card">
+                <h3>Управление дисками</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">FORMAT</span> - Форматирование</li>
-                    <li><span class="command-name">CHKDSK</span> - Проверка диска</li>
-                    <li><span class="command-name">LABEL</span> - Метка диска</li>
+                    <li><span class="cmd">FORMAT</span> - Форматирование</li>
+                    <li><span class="cmd">CHKDSK</span> - Проверка диска</li>
+                    <li><span class="cmd">LABEL</span> - Метка диска</li>
                 </ul>
             </div>
-            <div class="command-category">
-                <h3>🖥️ Мониторинг железа</h3>
+            <div class="card">
+                <h3>Мониторинг железа</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">TEMP</span> - Температура CPU</li>
-                    <li><span class="command-name">GPU</span> - Инфо о видео</li>
-                    <li><span class="command-name">IOSTAT</span> - Статус портов</li>
+                    <li><span class="cmd">TEMP</span> - Температура CPU</li>
+                    <li><span class="cmd">GPU</span> - Инфо о видео</li>
+                    <li><span class="cmd">IOSTAT</span> - Статус портов</li>
                 </ul>
             </div>
-            <div class="command-category">
-                <h3>📄 Файловые операции</h3>
+            <div class="card">
+                <h3>Файловые операции</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">DEL</span> - Удаление файла</li>
-                    <li><span class="command-name">REN</span> - Переименование</li>
-                    <li><span class="command-name">ATTR</span> - Атрибуты файла</li>
+                    <li><span class="cmd">DEL</span> - Удаление файла</li>
+                    <li><span class="cmd">REN</span> - Переименование</li>
+                    <li><span class="cmd">ATTR</span> - Атрибуты файла</li>
                 </ul>
             </div>
-            <div class="command-category">
-                <h3>🔄 Процессы</h3>
+            <div class="card">
+                <h3>Процессы</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">TASKL</span> - Список процессов</li>
-                    <li><span class="command-name">KILL</span> - Завершение процесса</li>
+                    <li><span class="cmd">TASKL</span> - Список процессов</li>
+                    <li><span class="cmd">KILL</span> - Завершение процесса</li>
                 </ul>
             </div>
-            <div class="command-category">
-                <h3>🌐 Сетевые команды</h3>
+            <div class="card">
+                <h3>Сетевые команды</h3>
                 <ul class="command-list">
-                    <li><span class="command-name">PING</span> - Проверка соединения</li>
-                    <li><span class="command-name">NETSTAT</span> - Активные порты</li>
+                    <li><span class="cmd">PING</span> - Проверка соединения</li>
+                    <li><span class="cmd">NETSTAT</span> - Активные порты</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <!-- Screenshots -->
+    <!-- Скриншоты -->
     <div class="section" id="screenshots">
-        <h2 class="section-title">📸 Скриншоты</h2>
+        <h2 class="section-title">Скриншоты</h2>
         <div class="screenshots">
             <div class="screenshot">
-                <img src="1.png" alt="CD-DOS Main Screen" onerror="this.src='https://via.placeholder.com/400x300/000/0f0?text=CD-DOS+Main+Screen'">
-                <div class="screenshot-caption">Главный экран CD-DOS</div>
+                <img src="1.png" alt="Загрузка CD-DOS">
+                <p>Загрузка системы</p>
             </div>
             <div class="screenshot">
-                <img src="2.png" alt="CD-DOS Commands" onerror="this.src='https://via.placeholder.com/400x300/000/0f0?text=CD-DOS+Commands'">
-                <div class="screenshot-caption">Выполнение команд</div>
+                <img src="2.png" alt="Команды CD-DOS">
+                <p>Выполнение команд</p>
             </div>
             <div class="screenshot">
-                <img src="3.png" alt="CD-DOS System Info" onerror="this.src='https://via.placeholder.com/400x300/000/0f0?text=System+Information'">
-                <div class="screenshot-caption">Системная информация</div>
+                <img src="3.png" alt="Информация о системе">
+                <p>Системная информация</p>
             </div>
         </div>
     </div>
 
-    <!-- System Requirements -->
+    <!-- Системные требования -->
     <div class="section">
-        <h2 class="section-title">💻 Системные требования</h2>
+        <h2 class="section-title">Системные требования</h2>
         <div class="requirements">
-            <div class="req-item">
+            <div class="req">
                 <strong>Минимальные:</strong><br>
-                • CPU: 8086+<br>
-                • RAM: 512 KB<br>
-                • Диск: 1.44 MB Floppy<br>
-                • Видео: CGA/VGA
+                CPU: 8086+<br>
+                RAM: 512 KB<br>
+                Диск: 1.44 MB Floppy<br>
+                Видео: CGA/VGA
             </div>
-            <div class="req-item">
+            <div class="req">
                 <strong>Рекомендуемые:</strong><br>
-                • CPU: 386+<br>
-                • RAM: 2 MB<br>
-                • Диск: HDD или Floppy<br>
-                • Видео: VGA
+                CPU: 386+<br>
+                RAM: 2 MB<br>
+                Диск: HDD или Floppy<br>
+                Видео: VGA
             </div>
-            <div class="req-item">
+            <div class="req">
                 <strong>Для эмуляции:</strong><br>
-                • QEMU<br>
-                • VirtualBox<br>
-                • DOSBox<br>
-                • Bochs
+                QEMU, VirtualBox, DOSBox, Bochs
             </div>
         </div>
     </div>
 
-    <!-- Download -->
+    <!-- Скачать -->
     <div class="section" id="download">
         <div class="download-box">
-            <h2 class="section-title">⬇️ Скачать CD-DOS</h2>
+            <h2 class="section-title">Скачать CD-DOS</h2>
             <p>Версия 2.0 - Стабильный релиз</p>
-            <a href="CD-DOS.IMG" download class="download-btn">📥 Скачать CD-DOS.IMG (1.44 MB)</a>
-            <div class="file-info">
-                <p>📦 Размер: 1.44 MB | 📅 Дата: Январь 2024 | 📄 Лицензия: Open Source</p>
-                <p>🔗 MD5: 7f8e9d3c4b5a6f7e8d9c0b1a2f3e4d5c</p>
-            </div>
-            <br>
-            <a href="source.zip" download class="download-btn" style="background:#333; color:#0f0;">📚 Скачать исходный код</a>
+            <a href="CD-DOS.IMG" download class="download-btn">Скачать CD-DOS.IMG (1.44 MB)</a>
+            <a href="source.zip" download class="download-btn">Скачать исходный код</a>
+            <p style="margin-top: 15px; font-size: 12px;">
+                Размер: 1.44 MB | Дата: Январь 2024 | Лицензия: Open Source
+            </p>
         </div>
 
-        <!-- Инструкция по запуску -->
-        <div class="console-demo" style="margin-top: 20px;">
-            <h3 style="color:#0f0; margin-bottom: 10px;">🚀 Быстрый старт</h3>
-            <div class="console-line"><span class="console-prompt">$</span> qemu-system-x86_64 -fda CD-DOS.IMG</div>
-            <div class="console-line"><span class="console-prompt">$</span> qemu-system-i386 -fda CD-DOS.IMG</div>
-            <div class="console-line" style="margin-top: 10px;">Или запишите на дискету:</div>
-            <div class="console-line"><span class="console-prompt">$</span> dd if=CD-DOS.IMG of=/dev/fd0</div>
+        <div class="console" style="margin-top: 15px;">
+            <h3 style="color: #00ff00; margin-bottom: 10px;">Быстрый старт</h3>
+            <div class="console-line"><span class="prompt">$</span> qemu-system-x86_64 -fda CD-DOS.IMG</div>
+            <div class="console-line"><span class="prompt">$</span> qemu-system-i386 -fda CD-DOS.IMG</div>
         </div>
     </div>
 
-    <!-- Documentation -->
-    <div class="section" id="docs">
-        <h2 class="section-title">📖 Документация</h2>
-        <div class="commands-grid">
-            <div class="command-category">
-                <h3>📚 Руководство пользователя</h3>
-                <p>Подробное описание всех команд и их использования</p>
-                <a href="#" style="color:#0f0;">Читать →</a>
-            </div>
-            <div class="command-category">
-                <h3>🔧 Для разработчиков</h3>
-                <p>API, системные вызовы и примеры программирования</p>
-                <a href="#" style="color:#0f0;">Подробнее →</a>
-            </div>
-            <div class="command-category">
-                <h3>❓ FAQ</h3>
-                <p>Часто задаваемые вопросы и их решения</p>
-                <a href="#" style="color:#0f0;">Смотреть →</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- Футер -->
     <div class="footer">
-        <p>© 2024 CD-DOS Project. Сделано с любовью к ретро-вычислениям.</p>
-        <p>CD-DOS — Open Source проект. Присоединяйтесь к разработке на GitHub</p>
-        <p style="margin-top: 10px;">
-            <a href="#" style="color:#0f0;">GitHub</a> |
-            <a href="#" style="color:#0f0;">Telegram</a> |
-            <a href="#" style="color:#0f0;">Discord</a>
+        <p>© 2024 CD-DOS Project. Open Source.</p>
+        <p>
+            <a href="#">GitHub</a> | 
+            <a href="#">Telegram</a> | 
+            <a href="#">Discord</a>
         </p>
-        <div class="ascii-art" style="font-size: 10px; margin-top: 20px;">
-        ╔══════════════════════════════════════════════════════╗
-        ║  "Keep it simple, keep it fast - Keep DOS alive!"  ║
-        ╚══════════════════════════════════════════════════════╝
-        </div>
+        <pre style="font-size: 10px; margin-top: 15px;">
+╔══════════════════════════════════════════════════════╗
+║  "Keep it simple, keep it fast - Keep DOS alive!"  ║
+╚══════════════════════════════════════════════════════╝
+        </pre>
     </div>
 </div>
-
-<script>
-    // Добавляем эффект печатающей машинки для консоли
-    document.addEventListener('DOMContentLoaded', function() {
-        const consoleLines = document.querySelectorAll('.console-line');
-        consoleLines.forEach((line, index) => {
-            const text = line.innerText;
-            line.innerText = '';
-            setTimeout(() => {
-                let i = 0;
-                const interval = setInterval(() => {
-                    if (i < text.length) {
-                        line.innerText += text[i];
-                        i++;
-                    } else {
-                        clearInterval(interval);
-                    }
-                }, 20 + index * 100);
-            }, index * 200);
-        });
-    });
-</script>
 
 </body>
 </html>
